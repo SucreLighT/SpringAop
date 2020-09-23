@@ -3,12 +3,19 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--配置代理对象-->
+    <bean id="proxyAccountService" factory-bean="proxyAccount" factory-method="getAccountService"/>
+    <bean id="proxyAccount" class="cn.sucrelt.service.impl.ProxyAccountService">
+        <property name="accountService" ref="accountService"/>
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+
     <!-- 配置Service -->
     <bean id="accountService" class="cn.sucrelt.service.impl.AccountServiceImpl">
         <!-- 注入dao -->
         <property name="accountDao" ref="accountDao"/>
         <!--注入事务管理器-->
-        <property name="transactionManager" ref="transactionManager"/>
+        <!--        <property name="transactionManager" ref="transactionManager"/>-->
     </bean>
 
     <!--配置Dao对象-->
