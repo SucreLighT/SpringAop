@@ -1,13 +1,10 @@
-package cn.sucrelt.cilib;
+package cn.sucrelt.cglib;
 
-import cn.sucrelt.proxy.InterfaceProducer;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
-import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 /**
  * @description: 模拟一个消费者

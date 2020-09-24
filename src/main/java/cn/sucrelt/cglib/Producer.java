@@ -1,6 +1,4 @@
-package cn.sucrelt.cilib;
-
-import cn.sucrelt.proxy.InterfaceProducer;
+package cn.sucrelt.cglib;
 
 /**
  * @description: 生产厂家
