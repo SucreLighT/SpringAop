@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--配置SpringIOC，把Service对象配置进来-->
+    <bean id="aopAccountService" class="cn.sucrelt.aopservice.impl.AopAccountServiceImpl"/>
+    <!--基于XML的AOP配置-->
+    <!-- 把通知Bean交给Spring管理-->
+
+    <!--配置Logger类-->
+    <bean id="logger" class="cn.sucrelt.aoputils.Logger"/>
+    <!--配置AOP-->
+    <aop:config>
+        <aop:aspect id="logAdvice" ref="logger">
+            <aop:before method="printLog"
+                        pointcut="execution(* cn.sucrelt.aopservice.impl.*.*(..))"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
