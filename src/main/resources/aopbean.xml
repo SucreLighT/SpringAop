@@ -14,10 +14,17 @@
     <!--配置Logger类-->
     <bean id="logger" class="cn.sucrelt.aoputils.Logger"/>
     <!--配置AOP-->
+    <!--配置切面-->
     <aop:config>
         <aop:aspect id="logAdvice" ref="logger">
-            <aop:before method="printLog"
-                        pointcut="execution(* cn.sucrelt.aopservice.impl.*.*(..))"/>
+            <!--配置切入点表达式-->
+            <aop:pointcut id="pt1" expression="execution(* cn.sucrelt.aopservice.impl.*.*(..))"/>
+
+            <aop:before method="beforePrintLog" pointcut-ref="pt1"/>
+            <aop:after-returning method="afterReturningPrintLog" pointcut-ref="pt1"/>
+            <aop:after-throwing method="afterThrowingPrintLog" pointcut-ref="pt1"/>
+            <aop:after method="afterPrintLog" pointcut-ref="pt1"/>
+            <aop:around method="aroundPrintLog" pointcut-ref="pt1"/>
         </aop:aspect>
     </aop:config>
 </beans>

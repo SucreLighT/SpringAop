@@ -16,8 +16,8 @@ public class AopTest {
         AopAccountService aopAccountService = (AopAccountService) applicationContext.getBean("aopAccountService");
 
         aopAccountService.saveAccount();
-        aopAccountService.updateAccount(1);
-        aopAccountService.deleteAccount();
+        // aopAccountService.updateAccount(1);
+        // aopAccountService.deleteAccount();
 
     }
 }

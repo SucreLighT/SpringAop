@@ -8,9 +8,37 @@ package cn.sucrelt.aoputils;
  */
 public class Logger {
     /**
-     * 用于打印日志，计划让其在切入点方法执行之前执行
+     * 前置通知
      */
-    public void printLog() {
-        System.out.println("Logger类开始记录日志...");
+    public void beforePrintLog() {
+        System.out.println("前置通知beforePrintLog开始记录日志...");
+    }
+
+    /**
+     * 后置通知
+     */
+    public void afterReturningPrintLog() {
+        System.out.println("后置通知afterReturningPrintLog开始记录日志...");
+    }
+
+    /**
+     * 异常通知
+     */
+    public void afterThrowingPrintLog() {
+        System.out.println("异常通知afterThrowingPrintLog开始记录日志...");
+    }
+
+    /**
+     * 最终通知
+     */
+    public void afterPrintLog() {
+        System.out.println("最终通知afterPrintLog开始记录日志...");
+    }
+
+    /**
+     * 环绕通知
+     */
+    public void aroundPrintLog() {
+        System.out.println("环绕通知aroundPrintLog开始记录日志...");
     }
 }
