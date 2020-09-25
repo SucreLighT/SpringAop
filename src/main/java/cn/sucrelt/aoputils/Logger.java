@@ -1,5 +1,7 @@
 package cn.sucrelt.aoputils;
 
+import org.aspectj.lang.ProceedingJoinPoint;
+
 /**
  * @description: 用于记录日志的方法
  * @author: sucre
@@ -38,7 +40,19 @@ public class Logger {
     /**
      * 环绕通知
      */
-    public void aroundPrintLog() {
-        System.out.println("环绕通知aroundPrintLog开始记录日志...");
+    public Object aroundPrintLog(ProceedingJoinPoint pjp) {
+        Object rtValue = null;
+        try {
+            Object[] args = pjp.getArgs();
+            System.out.println("环绕通知aroundPrintLog开始记录日志...前置");
+            rtValue = pjp.proceed(args);
+            System.out.println("环绕通知aroundPrintLog开始记录日志...后置");
+            return rtValue;
+        } catch (Throwable throwable) {
+            System.out.println("环绕通知aroundPrintLog开始记录日志...异常");
+            throw new RuntimeException(throwable);
+        }finally {
+            System.out.println("环绕通知aroundPrintLog开始记录日志...最终");
+        }
     }
 }
