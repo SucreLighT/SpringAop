@@ -3,7 +3,6 @@ package cn.sucrelt.service.impl;
 import cn.sucrelt.dao.AccountDao;
 import cn.sucrelt.domain.Account;
 import cn.sucrelt.service.AccountService;
-import cn.sucrelt.utils.TransactionManager;
 
 import java.util.List;
 
@@ -16,34 +15,13 @@ import java.util.List;
 public class AccountServiceImpl implements AccountService {
 
     private AccountDao accountDao;
-    // private TransactionManager transactionManager;
-    //
-    // public void setTransactionManager(TransactionManager transactionManager) {
-    //     this.transactionManager = transactionManager;
-    // }
 
     public void setAccountDao(AccountDao accountDao) {
         this.accountDao = accountDao;
     }
 
     public List<Account> findAllAccount() {
-        // try {
-        //     //1.开启事务
-        //     transactionManager.beginTransaction();
-        //     //2.执行操作
-        List<Account> accounts = accountDao.findAllAccount();
-        // //3.提交事务
-        // transactionManager.commit();
-        // //4.返回结果
-        return accounts;
-        // } catch (Exception e) {
-        //     //5.回滚事务
-        //     transactionManager.rollback();
-        //     throw new RuntimeException(e);
-        // } finally {
-        //     //6.释放连接
-        //     transactionManager.release();
-        // }
+        return accountDao.findAllAccount();
     }
 
     public Account findAccountById(Integer accountId) {
